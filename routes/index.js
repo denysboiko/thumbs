@@ -40,34 +40,35 @@ router.post('/thumbs', function (req, res){
         //var random = Math.random().toString();
         //var id = crypto.createHash('sha1').update(current_date + random).digest('hex');
 
-        for (i = 0; i <= uploadedFiles.length-1; i++) {
+        for (var i = 0; i <= uploadedFiles.length-1; i++) {
             var temp_path = uploadedFiles[i].path;
             var file_name = uploadedFiles[i].name;
-            var new_file= new_location + file_name;
+            console.log(uploadedFiles[i].name);
+            var new_file = new_location + file_name;
+            (function () {
                 fs.copy(temp_path, new_file, function(err) {
-                if (err) {
-                    throw err;
-                    console.log("dva: "+uploadedFiles.length);
-                    console.error(err);
-                } else {
-                    console.log("dva: "+uploadedFiles.length);
-                    //console.log(uploadedFiles);
-                }
-            });
-            gm(new_file)
-                .resize(w, h, "^")
-                .autoOrient()
-                .gravity('Center')
-                .extent(w, h)
-                .write('uploads/thumbs/' + file_name, function (err) {
-                    if (err) throw err
-                    else
-                        console.log(' hooray! ');
-                    zip.file(new_file, 'hello there');
-                    var data = zip.generate({base64:false,compression:'DEFLATE'});
-                    fs.writeFileSync('uploads/ras.zip', data, 'binary');
-
+                    if (err) throw err;
+                    else console.log(uploadedFiles);
                 });
+            })();
+            (function () {
+                gm(new_file)
+                    .resize(w, h, "^")
+                    .autoOrient()
+                    .gravity('Center')
+                    .extent(w, h)
+                    .write('uploads/thumbs/' + file_name, function (err) {
+                        if (err) throw err;
+                        else
+                            console.log(' hooray! ');
+                        //zip.file(new_file, 'hello there');
+                        //var data = zip.generate({base64:false,compression:'DEFLATE'});
+                        //fs.writeFileSync('uploads/ras.zip', data, 'binary');
+
+                    });
+            })();
+
+
         }
 
 
