@@ -1,0 +1,72 @@
+extends layout
+
+block content
+    script.
+        $(function() {
+            $( "#slider" ).slider({
+                value: 60,
+                min: 0,
+                max: 100,
+                range: "min",
+                slide: function( event, ui ) {
+                    $( "#amount" ).val( ui.value );
+                }
+            });
+        });
+        $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
+
+
+    h1= title
+    p Welcome to #{title}
+    div(class='container')
+        div(class='form-group', id='rszoptions')
+            label(for='width') Width:
+
+                .input-group.spinner(data-bottom='0')
+                    input#width.form-control(name='width', type='text', value='0')
+
+                    .input-group-btn-vertical
+                        button.btn.btn-default
+                            i.fa.fa-caret-up
+
+                        button.btn.btn-default
+                            i.fa.fa-caret-down
+
+                label(for='height') Height:
+
+                .input-group.spinner(data-bottom='0')
+                    input#height.form-control(name='height', type='text', value='0')
+
+                    .input-group-btn-vertical
+                        button.btn.btn-default
+                            i.fa.fa-caret-up
+
+                        button.btn.btn-default
+                            i.fa.fa-caret-down
+
+                #slider(name='slider')
+
+                input#amount(type='text', readonly='', style='border:0; font-weight:bold;')
+
+                label.checkbox(for='checkbox1') Checkbox
+                    input#checkbox1(type='checkbox', value='')
+                button.btn.btn-primary(role='submit') Get Thumbs
+
+        script.
+            (function ($) {
+                        $('.spinner .btn:first-of-type').on('click', function() {
+                    $(this).parents('.spinner').children('input').val( parseInt($(this).parents('.spinner').children('input').val(), 10) + 1);
+                });
+                        $('.spinner .btn:last-of-type').on('click', function() {
+                    console.log( $(this).parents('.spinner').data('bottom') )
+                    if ( $(this).parents('.spinner').data('bottom') != NaN ) {
+                        $(this).parents('.spinner').children('input').val( parseInt($(this).parents('.spinner').children('input').val(), 10) - 1);
+                        if ( parseInt($(this).parents('.spinner').children('input').val(), 10) - 1 < $(this).parents('.spinner').data('bottom') ) {
+                            $(this).parents('.spinner').children('input').val(0);
+                        }
+                    }
+                    else {
+                        $(this).parents('.spinner').children('input').val( parseInt($(this).parents('.spinner').children('input').val(), 10) - 1);
+                    }
+                });
+                    })(jQuery);
