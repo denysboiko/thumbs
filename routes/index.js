@@ -2,14 +2,13 @@ var express = require('express');
 var router = express.Router();
 var async=require('async');
 var gm = require('gm').subClass({ imageMagick: true });
-var zip = new require('node-zip')();
 var crypto = require('crypto');
+var fs   = require('fs-extra');
 
 var formidable = require('formidable');
 var util = require('util');
-var fs   = require('fs-extra');
 var sess;
-
+var zip = require ('zip');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -61,11 +60,15 @@ router.post('/thumbs', function (req, res){
                         if (err) throw err;
                         else
                             console.log(' hooray! ');
+
+
                         //zip.file(new_file, 'hello there');
                         //var data = zip.generate({base64:false,compression:'DEFLATE'});
                         //fs.writeFileSync('uploads/ras.zip', data, 'binary');
 
                     });
+                    zip();
+                    //res.download('/thumbs.zip');
             })();
 
 
