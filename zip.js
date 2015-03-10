@@ -35,7 +35,7 @@ fs.readdir(dir, function(err, files) {
 });*/
 
 module.exports = function () {
-    var dir = "uploads/thumbs/";
+    var dir = "public/uploads/thumbs/";
 
     fs.readdir(dir, function(err, files) {
         if (err) throw err;

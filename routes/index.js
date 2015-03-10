@@ -33,7 +33,7 @@ router.post('/thumbs', function (req, res){
     form.on('end', function(fields, files) {
 
         var uploadedFiles = this.openedFiles;
-        var new_location = 'uploads/';
+        var new_location = 'public/uploads/';
 
         //var current_date = (new Date()).valueOf().toString();
         //var random = Math.random().toString();
@@ -56,7 +56,7 @@ router.post('/thumbs', function (req, res){
                     .autoOrient()
                     .gravity('Center')
                     .extent(w, h)
-                    .write('uploads/thumbs/' + file_name, function (err) {
+                    .write('public/uploads/thumbs/' + file_name, function (err) {
                         if (err) throw err;
                         else
                             console.log(' hooray! ');
