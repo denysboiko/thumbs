@@ -1,0 +1,9 @@
+git commit
+git push
+rhc app-deploy master -a thumb
+
+rhc app-start thumb
+env-set NODE_PATH="app-root/repo/" -a thumb
+
+
+rhc env-list thumb
