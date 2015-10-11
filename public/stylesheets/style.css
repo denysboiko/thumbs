@@ -59,7 +59,8 @@ section, footer, header, aside{
     padding:30px;
     border-radius:3px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    float: left;
+
+    margin: 0 auto;
 }
 
 #drop{
@@ -117,6 +118,7 @@ section, footer, header, aside{
     height: 52px;
 
     position: relative;
+    box-sizing: content-box;
 }
 
 #upload ul li input{
@@ -210,4 +212,22 @@ section, footer, header, aside{
     position: relative;
     float: left;
     margin-top: 11px;
+}
+
+
+#rszoptions {
+    width: 600px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.spin-wrapper {
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+#go {
+    display: inline-block;
+    vertical-align: text-bottom;
 }

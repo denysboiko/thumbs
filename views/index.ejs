@@ -32,10 +32,7 @@
         $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
     </script>
     <style>
-        #rszoptions {
-            float: left;
-            margin-left: 60px;
-        }
+
         #rszoptions > input {
             width: 100px;
         }
@@ -96,6 +93,43 @@
 <body>
 
 <div class="container">
+    <a href="/zip">Download</a>
+    <div class="form-group" id="rszoptions">
+
+        <div class="spin-wrapper">
+            <label for="width">Width:</label>
+            <div class="input-group spinner" data-bottom=0>
+                <input id="width" name="width" type="text" class="form-control" value="300">
+                <div class="input-group-btn-vertical">
+                    <button class="btn btn-default"><i class="fa fa-caret-up"></i></button>
+                    <button class="btn btn-default"><i class="fa fa-caret-down"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="spin-wrapper">
+            <label for="height">Height:</label>
+            <div class="input-group spinner" data-bottom=0>
+                <input id="height" name="height" type="text" class="form-control" value="300">
+                <div class="input-group-btn-vertical">
+                    <button class="btn btn-default"><i class="fa fa-caret-up"></i></button>
+                    <button class="btn btn-default"><i class="fa fa-caret-down"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!--<div name="slider" id="slider"></div>
+        <input type="text" id="amount" readonly style="border:0; font-weight:bold;">
+
+        <label class="checkbox" for="checkbox1">
+            <input type="checkbox" value="" id="checkbox1">
+            Checkbox
+        </label>-->
+        <button class="btn btn-primary" role="submit" id="go">Get Thumbs</button>
+
+
+    </div>
+
     <form id="upload" method="post" action="/thumbs" enctype="multipart/form-data">
         <div id="drop">
             Drop Here
@@ -111,37 +145,7 @@
     </form>
 
 
-    <div class="form-group" id="rszoptions">
 
-        <label for="width">Width:</label>
-        <div class="input-group spinner" data-bottom=0>
-            <input id="width" name="width" type="text" class="form-control" value="300">
-            <div class="input-group-btn-vertical">
-                <button class="btn btn-default"><i class="fa fa-caret-up"></i></button>
-                <button class="btn btn-default"><i class="fa fa-caret-down"></i></button>
-            </div>
-        </div>
-
-        <label for="height">Height:</label>
-        <div class="input-group spinner" data-bottom=0>
-            <input id="height" name="height" type="text" class="form-control" value="400">
-            <div class="input-group-btn-vertical">
-                <button class="btn btn-default"><i class="fa fa-caret-up"></i></button>
-                <button class="btn btn-default"><i class="fa fa-caret-down"></i></button>
-            </div>
-        </div>
-
-        <div name="slider" id="slider"></div>
-        <input type="text" id="amount" readonly style="border:0; font-weight:bold;">
-
-        <label class="checkbox" for="checkbox1">
-            <input type="checkbox" value="" id="checkbox1">
-            Checkbox
-        </label>
-        <button class="btn btn-primary" role="submit" id="go">Get Thumbs</button>
-
-
-    </div>
 </div>
 
 <script>
