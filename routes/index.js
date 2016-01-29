@@ -5,10 +5,29 @@ var gm = require('gm').subClass({ imageMagick: true });
 var crypto = require('crypto');
 var fs   = require('fs-extra');
 
+require('node-zip');
+var fs   = require('fs-extra');
+
 var formidable = require('formidable');
 var util = require('util');
 var sess;
-var zip = require ('zip');
+//var zip = require ('zip');
+
+function zip () {
+    var dir = "public/uploads/thumbs/";
+
+    fs.readdir(dir, function(err, files) {
+        if (err) throw err;
+        var zip = new JSZip();
+        for (var i=0; i<files.length; i++) {
+            var data = fs.readFileSync(dir + files[i]);
+            zip.file(files[i], data);
+        }
+
+        var content = zip.generate({type:"nodebuffer",compression:"DEFLATE"});
+        fs.writeFileSync('thumbs.zip', content, 'binary');
+    });
+};
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -76,10 +95,10 @@ router.post('/thumbs', function (req, res) {
                  }
              ], function (err, file_name, arguments) {
                 if (err) throw (err);
-                else console.log("Successfully resized " + file_name);
+                else zip();//console.log("Successfully resized " + file_name);
              });
             console.log('Success!');
-            zip();
+            //zip();
     });
 });
 
