@@ -42,6 +42,12 @@ router.get('/zip', function(req, res, next) {
 });
 
 
+router.get('/test', function(req, res, next) {
+    res.render('test', { title: 'Thumbs' });
+    sess=req.session;
+    console.log(sess);
+});
+
 
 router.post('/thumbs', function (req, res) {
     var form = new formidable.IncomingForm();

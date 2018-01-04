@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Upload</title>
+
+		<!-- Google web fonts -->
+		<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+
+		<!-- The main CSS file -->
+		<link href="public/upload-assets/css/style.css" rel="stylesheet" />
+
+        <script src="/js/jquery-2.1.1.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+
+	<body>
+
+    <h1 class="">Test page</h1>
+
+	<h2 id = "name">Test page</h2>
+	<h2 id = "bark">Test page</h2>
+
+    <script>
+
+		function Animal(name) {
+
+			this.name = name;
+
+			this.getName = function() {
+				return this.name;
+			}
+
+		}
+
+
+		function Dog(name) {
+
+			this.name = name;
+
+			this.bark = function() {
+				return  'Dog ' + this.name + ' is barking';
+			};
+
+		}
+
+		Dog.prototype = new Animal();
+
+		var dog = new Dog ('Aban');
+
+
+        (function () {
+
+			document.getElementById('name').innerHTML = dog.getName();
+            document.getElementById('bark').innerHTML = dog.bark();
+
+        }) ()
+    </script>
+
+		<!-- Our main JS file -->
+		<script src="public/upload-assets/js/thumbs.js"></script>
+	</body>
+</html>
